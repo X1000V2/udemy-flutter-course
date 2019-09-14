@@ -61,9 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               textColor: Colors.white,
               color: Colors.blue,
-              onPressed: () {
-                goToCounterScreen();
-              },
+              onPressed: () => goToCounterScreen()
+              ,
               child: const Text('Go To Counter Screen',
                   style: TextStyle(fontSize: 20)),
             ),
