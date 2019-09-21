@@ -1,10 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CounterPage extends StatelessWidget{
+class CounterPage extends StatefulWidget {
+
+  @override
+  createState() {
+    return _CounterPageState();
+  }
+}
+
+class _CounterPageState extends State<CounterPage> {
 
   final textStyle = TextStyle(fontSize: 28.0);
+
+  int _counter = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +23,26 @@ class CounterPage extends StatelessWidget{
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Number clicks',style: textStyle,),
-            Text('0',style: textStyle,),
-          ],
-        ) 
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Number clicks',
+            style: textStyle,
+          ),
+          Text(
+            '$_counter',
+            style: textStyle,
+          ),
+        ],
+      )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Button pressed'),
+        onPressed: (){
+          setState(() {
+            ++_counter;
+          });
+        },
         child: Icon(Icons.add),
       ),
     );
