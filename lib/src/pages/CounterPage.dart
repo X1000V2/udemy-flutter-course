@@ -37,14 +37,39 @@ class _CounterPageState extends State<CounterPage> {
         ],
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            ++_counter;
-          });
-        },
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: _createButtons()
     );
+  }
+
+  Widget _createButtons(){
+    return Row(
+      children: <Widget>[
+        SizedBox(width: 10.0,),
+        FloatingActionButton(onPressed: () => _reset(),child: Icon(Icons.exposure_zero),),
+        Expanded(child: SizedBox(),),
+        FloatingActionButton(onPressed: () => _decrement(),child: Icon(Icons.remove),),
+        SizedBox(width: 10.0,),
+        FloatingActionButton(onPressed: () => _increment(),child: Icon(Icons.add),),
+        SizedBox(width: 10.0,),
+      ],
+    );
+  }
+
+  _decrement(){
+    if(_counter > 0)
+    setState(() {
+        _counter--;
+    });
+  }
+  _increment(){
+    setState(() {
+        _counter++;
+    });
+  }
+
+  _reset(){
+    setState(() {
+        _counter = 0;
+    });
   }
 }
