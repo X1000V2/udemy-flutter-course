@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter_course/src/pages/ComponentsPage.dart';
 import 'package:udemy_flutter_course/src/pages/CounterPage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -31,19 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              padding: const EdgeInsets.all(8.0),
-              textColor: Colors.white,
-              color: Colors.blue,
-              onPressed: () => goToCounterScreen()
-              ,
-              child: const Text('Go To Counter Screen',
-                  style: TextStyle(fontSize: 20)),
-            ),
-            Text(
-              'hola',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            _createButton(title: 'Go To Counter Screen', goTo: goToCounterScreen),
+            _createButton(title: 'Go To Components Screen', goTo: goToComponentsScreen),
           ],
         ),
       ),
@@ -51,10 +40,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   goToCounterScreen() {
-    print('hola mierda');
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CounterPage()),
+    );
+  }
+
+  goToComponentsScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ComponentsPage()),
+    );
+  }
+
+  Widget _createButton({String title, Function goTo}) {
+    return RaisedButton(
+      padding: const EdgeInsets.all(8.0),
+      textColor: Colors.white,
+      color: Colors.blue,
+      onPressed: () => goTo(),
+      child: Text(title, style: TextStyle(fontSize: 20)),
     );
   }
 }
