@@ -13,7 +13,7 @@ class _CounterPageState extends State<CounterPage> {
 
   final textStyle = TextStyle(fontSize: 28.0);
 
-  int _counter = 2;
+  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +45,11 @@ class _CounterPageState extends State<CounterPage> {
     return Row(
       children: <Widget>[
         SizedBox(width: 10.0,),
-        FloatingActionButton(onPressed: () => _reset(),child: Icon(Icons.exposure_zero),),
+        FloatingActionButton(heroTag: "btn1", onPressed: () => _reset(),child: Icon(Icons.exposure_zero),),
         Expanded(child: SizedBox(),),
-        FloatingActionButton(onPressed: () => _decrement(),child: Icon(Icons.remove),),
+        FloatingActionButton(heroTag: "btn2", onPressed: () => _decrement(),child: Icon(Icons.remove),),
         SizedBox(width: 10.0,),
-        FloatingActionButton(onPressed: () => _increment(),child: Icon(Icons.add),),
+        FloatingActionButton(heroTag: "btn3", onPressed: () => _increment(),child: Icon(Icons.add),),
         SizedBox(width: 10.0,),
       ],
     );
